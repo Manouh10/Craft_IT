@@ -6,7 +6,7 @@ var etatAction = adresse + "boulou_switch_device";
 var etatActuel = "https://us-central1-boulou-functions-for-devs.cloudfunctions.net/boulou_check_deviceStatus?developerId=" + devId + "&email=" + mail + "&deviceId=" + deviceId;
 var on = "ON";
 var off = "OFF";
-var ip = "192.168.88.21:8080"
+var ip = "http://192.168.88.21:8080"
 var urlSever = "/iot/scene/creer?"
 
 // horaire scene serie= temps=14:00:00 type=scene action=on/off
@@ -81,56 +81,26 @@ function sceneTimer() {
     AjoutScene("timer", deviceId, heure, minute, seconde, action);
 }
 
-// function AjoutScene(type, deviceId, idH, idM, idS, action) {
-//     var req = ip + urlSever + "temps=" + idH + ":" + idM + ":" + idS + "&serie=" + deviceId + "&action=" + action + "&type=" + type;
-//     console.log(req);
-//     fetch(req)
-//         .then(response => response.json())
-//         .then(data => {
-//             var res = data.resultat;
-//             if (res === "ko") {
-//                 alert("Un problème est survenu lors de l'ajout");
-//             }
-//             else {
-//                 alert("Ajout de scène réussi");
-//             }
-//         })
-//         .catch(error => {
-//             console.error('Une erreur s\'est produite:', error);
-//         });
-// }
-
-function AjoutScene() {
-    let heure = document.getElementById('heureH').value;
-    let minute = document.getElementById('minuteH').value;
-    let seconde = document.getElementById('secondeH').value;
-
-    var req = `http://${ip}${urlSever}temps=${heure}:${minute}:${seconde}&serie=${deviceId}&action=off&type=scene`;
+function AjoutScene(type, deviceId, idH, idM, idS, action) {
+    var req = ip + urlSever + "temps=" + idH + ":" + idM + ":" + idS + "&serie=" + deviceId + "&action=" + action + "&type=" + type;
     console.log(req);
-    var url = 'http://192.168.88.21:8080/iot/scene/creer?temps=20:20:00&serie=bf02db56c7a8be675baaey&action=off&type=scene';
-    console.log(url);
-    if (req === url) {
-        console.log("mitovy");
-    }
-    else {
-        console.log("tay")
-    }
     fetch(req)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
-            // Handle the response data
-            console.log('Success:', data);
+            var res = data.resultat;
+            if (res === "ko") {
+                alert("Un problème est survenu lors de l'ajout");
+            }
+            else {
+                alert("Ajout de scène réussi");
+            }
         })
         .catch(error => {
-            // Handle errors
-            console.error('Error:', error);
+            console.error('Une erreur s\'est produite:', error);
         });
 }
+
+
 function afficherContenu(sectionId) {
     var sections = document.querySelectorAll('[id$="Aff"]'); // Sélectionne tous les éléments dont l'ID se termine par "Aff"
     sections.forEach(function (section) {
@@ -148,3 +118,20 @@ function noneAfficherModal() {
         section.style.display = 'none'; // Cache toutes les sections
     });
 }
+
+function listeScene() {
+    var req = "http://192.168.88.21:8080/iot/scene/lister?serie=bf02db56c7a8be675baaey";
+    fetch(req)
+        .then(response => response.json())
+        .then(data => {
+            var res = data.resultat;
+
+            if (res === "ko") {
+                alert("Un problème est survenu lors de la recuperation de la liste");
+            } else {
+                console.log(data);
+            }
+        })
+}
+
+listeScene();
