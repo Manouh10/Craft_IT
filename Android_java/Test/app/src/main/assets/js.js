@@ -99,26 +99,36 @@ function sceneTimer() {
 //             console.error('Une erreur s\'est produite:', error);
 //         });
 // }
+
 function AjoutScene() {
     let heure = document.getElementById('heureH').value;
     let minute = document.getElementById('minuteH').value;
     let seconde = document.getElementById('secondeH').value;
 
-    var req = ip + urlSever + "temps=" + heure + ":" + minute + ":" + seconde + "&serie=" + deviceId + "&action=" + "off" + "&type=" + "scene";
-    console.log(req)
+    var req = `http://${ip}${urlSever}temps=${heure}:${minute}:${seconde}&serie=${deviceId}&action=off&type=scene`;
+    console.log(req);
+    var url = 'http://192.168.88.21:8080/iot/scene/creer?temps=20:20:00&serie=bf02db56c7a8be675baaey&action=off&type=scene';
+    console.log(url);
+    if (req === url) {
+        console.log("mitovy");
+    }
+    else {
+        console.log("tay")
+    }
     fetch(req)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
-            var res = data.resultat;
-            if (res === "ko") {
-                alert("Un problème est survenu lors de l'ajout");
-            }
-            else {
-                alert("Ajout de scène réussi");
-            }
+            // Handle the response data
+            console.log('Success:', data);
         })
         .catch(error => {
-            console.error('Une erreur s\'est produite:', error);
+            // Handle errors
+            console.error('Error:', error);
         });
 }
 function afficherContenu(sectionId) {

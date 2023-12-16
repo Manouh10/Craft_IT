@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Fetch API Request</title>
+</head>
+
+<body>
+
+    <script>
+        var url = 'http://192.168.88.21:8080/iot/scene/creer?temps=20:20:00&serie=bf02db56c7a8be675baaey&action=off&type=scene';
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Handle the response data
+                console.log('Success:', data);
+            })
+            .catch(error => {
+                // Handle errors
+                console.error('Error:', error);
+            });
+    </script>
+
+</body>
+
+</html>
