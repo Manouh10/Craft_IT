@@ -1,535 +1,148 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#000000">
-    <title>Finapp</title>
-    <meta name="description" content="Finapp HTML Mobile Template">
-    <meta name="keywords"
-        content="bootstrap, wallet, banking, fintech mobile template, cordova, phonegap, mobile, html, responsive" />
-    <link rel="icon" type="image/png" href="assets/img/favicon.png" sizes="32x32">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icon/192x192.png">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="manifest" href="__manifest.json">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+        integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css" />
+    <title>BOULOU</title>
+
 </head>
 
 <body>
-
-    <!-- loader -->
-    <div id="loader">
-        <img src="assets/img/loading-icon.png" alt="icon" class="loading-icon">
-    </div>
-    <!-- * loader -->
-
-    <!-- App Header -->
-    <div class="appHeader bg-primary text-light">
-        <div class="left">
-            <a href="#" class="headerButton" data-bs-toggle="modal" data-bs-target="#sidebarPanel">
-                <img src="assets/img/menu.png" alt="image" class="imaged w32">
-            </a>
+    <nav style="background-color: #efefef;">
+        <div class="form-group mb-2 d-flex justify-content-center align-items-center">
+            <h2 style="color: #444;font-size: 2.5rem;
+            font-weight: 1000;">Smart PLUG</h2>
         </div>
-        <div class="pageTitle">
-          
+        <div class="form-group mb-2 d-flex justify-content-center align-items-center">
+            <button id="monBouton" type="button" class="neo"
+                style="color: #007bff;padding: 10px;font-weight: 1000;margin: 10px;" data-bs-toggle="modal"
+                data-bs-target="#exampleModal" style="margin-top: 10px; width: 200px; height: 45px;">
+                AJOUTER
+            </button>
+
+            <button type="button" class="neo" style="color: #007bff;padding: 10px;font-weight: 1000;margin-right: 10px;"
+                data-bs-toggle="modal" data-bs-target="#exampleModalScene"
+                style="margin-top: 10px; width: 200px; height: 45px;" onclick="noneAfficherModal()">
+                SCENE
+            </button>
+
+            <!-- <button type="button" class="neo" style="color: #00ff80;padding: 10px;font-weight: 1000;margin-right: 10px;"
+                style="margin-top: 10px; width: 200px; height: 45px;" onclick="getData()">
+                Actualiser
+            </button> -->
+
+            <button type="button" class="neo" style="color: #007bff;padding: 10px;font-weight: 1000;"
+                style="margin-top: 10px; width: 200px; height: 45px;" onclick="getData()">
+                Message
+            </button>
         </div>
-        <div class="right">
-            <a href="#" class="headerButton">
-                <img src="assets/img/notif.png" alt="image" class="imaged w32">
-                <span class="badge badge-danger">4</span>
-            </a>
-            <a href="#" class="headerButton">
-                <img src="assets/img/manou.jpg" alt="image" class="imaged w32">
-               
-            </a>
-        </div>
-    </div>
-    <!-- * App Header -->
+    </nav>
 
+    <center>
+        <div class="row d-flex flex-column align-items-center p-2">
+            <div class="row col-md-12">
+                <div class="card neo" style="overflow: auto;">
+                    <div class="card-body">
 
-    <!-- App Capsule -->
-    <div id="appCapsule">
-
-        <!-- Wallet Card -->
-        <div class="section wallet-card-section pt-1">
-            <div class="wallet-card">
-                <!-- Balance -->
-                <div class="balance">
-                    <div class="left">
-                        <span class="title">Isan'ny tapakila</span>
-                        <h1 class="total">5</h1>
-                    </div>
-                    <div class="right">
-                        <a href="#" class="button" data-bs-toggle="modal" data-bs-target="#hividymodal">
-                            <img src="assets/img/plus.png" width="40" alt="image">
-                        </a>
-                    </div>
-                </div>
-                <!-- * Balance -->
-                <!-- Wallet Footer -->
-                <div class="wallet-footer">
-                  
-                 
-
-                </div>
-                <!-- * Wallet Footer -->
-            </div>
-        </div>
-        <!-- Wallet Card -->
-
-        <!-- Deposit Action Sheet -->
-        <div class="modal fade action-sheet" id="hividymodal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Hividy Tapakila</h5>
-                    </div>
-                    <div class="modal-body">
-                        <div class="action-sheet-content">
-                            <form>
-                                <div class="form-group basic">
-                                    <label class="label">Isa</label>
-                                    <div class="input-group mb-2">
-                                      
-                                        <input type="number" class="form-control"
-                                            value="0">
-                                    </div>
-                                </div>
-
-                                <div class="form-group basic">
-                                    <label class="label">Laharana finday(Mvola)</label>
-                                    <div class="input-group mb-2">
-                                        <input type="text" class="form-control" placeholder="Laharana"
-                                            value="034 28 546 79">
-                                    </div>
-                                </div>
-
-                                <div class="form-group basic">
-                                    <label class="label">Kaody miafina</label>
-                                    <div class="input-group mb-2">
-                                        <input type="password" class="form-control" placeholder="Laharana"
-                                            value="1111">
-                                    </div>
-                                </div>
-
-                                <img src="assets/img/mvola.png" width="100" type="image/png">
-                                <div class="form-group basic">
-                                    <button type="button" class="btn btn-primary btn-block btn-lg"
-                                        data-bs-dismiss="modal">Hividy</button>
-                                </div>
-                            </form>
+                        <div class="switch">
+                            <input type="checkbox" onchange="switchButton()" id="switchToggle" />
+                            <label for="switchToggle"></label>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
-        <div class="modal fade action-sheet" id="qrmodal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Handoa sarandalana</h5>
-                    </div>
-                    <div class="section">
-                        <div class="splash-page mt-5 mb-5">
-                            <div class="mb-3">
-                                <img src="assets/img/1.png" alt="QR Code" class="imaged square w140">
-                            </div>
-                            <h2 class="mb-2">Apanantony ny POS</h2>
-                           
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- * Deposit Action Sheet -->
+    </center>
 
-        <!-- Withdraw Action Sheet -->
-        <div class="modal fade action-sheet" id="withdrawActionSheet" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Withdraw Money</h5>
-                    </div>
-                    <div class="modal-body">
-                        <div class="action-sheet-content">
-                            <form>
-                                <div class="form-group basic">
-                                    <div class="input-wrapper">
-                                        <label class="label" for="account2d">From</label>
-                                        <select class="form-control custom-select" id="account2d">
-                                            <option value="0">Savings (*** 5019)</option>
-                                            <option value="1">Investment (*** 6212)</option>
-                                            <option value="2">Mortgage (*** 5021)</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group basic">
-                                    <div class="input-wrapper">
-                                        <label class="label" for="text11d">To</label>
-                                        <input type="email" class="form-control" id="text11d" placeholder="Enter IBAN">
-                                        <i class="clear-input">
-                                            <ion-icon name="close-circle"></ion-icon>
-                                        </i>
-                                    </div>
-                                </div>
-
-                                <div class="form-group basic">
-                                    <label class="label">Enter Amount</label>
-                                    <div class="input-group mb-2">
-                                        <span class="input-group-text" id="basic-addonb1">$</span>
-                                        <input type="text" class="form-control" placeholder="Enter an amount"
-                                            value="100">
-                                    </div>
-                                </div>
-
-                                <div class="form-group basic">
-                                    <button type="button" class="btn btn-primary btn-block btn-lg"
-                                        data-bs-dismiss="modal">Withdraw</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- * Withdraw Action Sheet -->
-
-        <!-- Send Action Sheet -->
-        <div class="modal fade action-sheet" id="sendActionSheet" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Send Money</h5>
-                    </div>
-                    <div class="modal-body">
-                        <div class="action-sheet-content">
-                            <form>
-                                <div class="form-group basic">
-                                    <div class="input-wrapper">
-                                        <label class="label" for="account2">From</label>
-                                        <select class="form-control custom-select" id="account2">
-                                            <option value="0">Savings (*** 5019)</option>
-                                            <option value="1">Investment (*** 6212)</option>
-                                            <option value="2">Mortgage (*** 5021)</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group basic">
-                                    <div class="input-wrapper">
-                                        <label class="label" for="text11">To</label>
-                                        <input type="email" class="form-control" id="text11"
-                                            placeholder="Enter bank ID">
-                                        <i class="clear-input">
-                                            <ion-icon name="close-circle"></ion-icon>
-                                        </i>
-                                    </div>
-                                </div>
-
-                                <div class="form-group basic">
-                                    <label class="label">Enter Amount</label>
-                                    <div class="input-group mb-2">
-                                        <span class="input-group-text" id="basic-addon1">$</span>
-                                        <input type="text" class="form-control" placeholder="Enter an amount"
-                                            value="100">
-                                    </div>
-                                </div>
-
-                                <div class="form-group basic">
-                                    <button type="button" class="btn btn-primary btn-block btn-lg"
-                                        data-bs-dismiss="modal">Send</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- * Send Action Sheet -->
-
-        <!-- Exchange Action Sheet -->
-        <div class="modal fade action-sheet" id="exchangeActionSheet" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Exchange Money</h5>
-                    </div>
-                    <div class="modal-body">
-                        <div class="action-sheet-content">
-                            <form>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="form-group basic">
-                                            <div class="input-wrapper">
-                                                <label class="label" for="currency1">From</label>
-                                                <select class="form-control custom-select" id="currency1">
-                                                    <option value="1">EUR</option>
-                                                    <option value="2">USD</option>
-                                                    <option value="3">AUD</option>
-                                                    <option value="4">CAD</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group basic">
-                                            <div class="input-wrapper">
-                                                <label class="label" for="currency2">To</label>
-                                                <select class="form-control custom-select" id="currency2">
-                                                    <option value="1">USD</option>
-                                                    <option value="1">EUR</option>
-                                                    <option value="2">AUD</option>
-                                                    <option value="3">CAD</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group basic">
-                                    <label class="label">Enter Amount</label>
-                                    <div class="input-group mb-2">
-                                        <span class="input-group-text" id="basic-addon2">$</span>
-                                        <input type="text" class="form-control" placeholder="Enter an amount"
-                                            value="100">
-                                    </div>
-                                </div>
-
-
-
-                                <div class="form-group basic">
-                                    <button type="button" class="btn btn-primary btn-block btn-lg"
-                                        data-bs-dismiss="modal">Exchange</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- * Exchange Action Sheet -->
-
-        <!-- Stats -->
-        <div class="section">
-            <div class="row mt-2">
-                <div class="col-6">
-                    <div class="stat-box">
-                        <div class="title">Hiaingana</div>
-                        <div class="form-group basic">
-                            <div class="input-group mb-2">
-                             
-                                <input type="text" class="form-control" placeholder="Enter an amount"
-                                    value=" ">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="stat-box">
-                        <div class="title">Ahatongavana</div>
-                        <div class="form-group basic">
-                            <div class="input-group mb-2">
-                             
-                                <input type="text" class="form-control" placeholder="Enter an amount"
-                                    value=" ">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-          
-        </div>
-        <div class="section">
-            <div class="row mt-2">
-                <div id="map" style="     width: 600px;
-                height: 225px;"></div>
-
-                <script>
-                    // Initialisation de la carte
-                    var mymap = L.map('map').setView([-18.896941, 47.549878], 13);
-            
-                    // Ajout d'une couche de tuiles OpenStreetMap
-                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        maxZoom: 19,
-                        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    }).addTo(mymap);
-            
-                    // Ajout d'un marqueur
-                   // var marker = L.marker([51.5, -0.09]).addTo(mymap);
-            
-                    // Ajout d'une info-bulle au marqueur
-                    marker.bindPopup("<b>Marqueur</b><br>Coordonnées : 51.5, -0.09").openPopup();
-                </script>
-              
-
-            </div>
-          
-        </div>
-    </div>
-   
-    <div class="appBottomMenu">
-        <a href="#"  class="item active" data-bs-toggle="modal" data-bs-target="#qrmodal">
-            <div class="col">
-               
-                
-                    <strong>HANDOA SARANDALANA</strong>
-              
-              
-            </div>
-        </a>
-       
-    </div>
-    <!-- * App Bottom Menu -->
-
-    <!-- App Sidebar -->
-    <div class="modal fade panelbox panelbox-left" id="sidebarPanel" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body p-0">
-                    <!-- profile box -->
-                    <div class="profileBox pt-2 pb-2">
-                        <div class="image-wrapper">
-                            <img src="assets/img/menu.png" alt="image" class="imaged  w36">
-                        </div>
-                        <div class="in">
-                            <strong>Jean Rakoto</strong>
-                            <div class="text-muted">034 78 456 23</div>
-                        </div>
-                        <a href="#" class="btn btn-link btn-icon sidebar-close" data-bs-dismiss="modal">
-                            <ion-icon name="close-outline"></ion-icon>
-                        </a>
-                    </div>
-                    <!-- * profile box -->
-                    <!-- balance -->
-                    <div class="sidebar-balance">
-                        <div class="listview-title">Isan'ny tapakila</div>
-                        <div class="in">
-                            <h1 class="amount">5</h1>
-                        </div>
-                    </div>
-                    <!-- * balance -->
-
-                    
-
-                    <!-- action group -->
-               
-                    <script>
-                        function test()
-                        {
-                            Android.showAlert("Message");
-                        }
-                    </script>
-                    
-                 
-                    <ul class="listview flush transparent no-line image-listview">
-                        <li>
-                            <a href="" onclick="test(); return false;" class="item">
-                                <div class="icon-box bg-primary">
-                                   <img src="assets/img/logout.png" width="15" type="image/png">
-                                </div>
-                                <div class="in">
-                                  FAHANA
-                                </div>
-                            </a>
-                        </li>
-                       
-                    </ul>
-                 
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- * App Sidebar -->
-
-
-
-    <!-- iOS Add to Home Action Sheet -->
-    <div class="modal inset fade action-sheet ios-add-to-home" id="ios-add-to-home-screen" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade" id="exampleModalScene" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Add to Home Screen</h5>
-                    <a href="#" class="close-button" data-bs-dismiss="modal">
-                        <ion-icon name="close"></ion-icon>
-                    </a>
+                    <button class="neo ModalHeaderBtn" onclick="afficherContenu('horaireAff')">Horaire</button>
+                    <button class="neo ModalHeaderBtn" onclick="afficherContenu('TimerAff')">Timer</button>
+                    <button class="neo ModalHeaderBtn" onclick="afficherContenu('ConsoAff')">Consommation</button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                 </div>
-                <div class="modal-body">
-                    <div class="action-sheet-content text-center">
-                        <div class="mb-1"><img src="assets/img/icon/192x192.png" alt="image" class="imaged w64 mb-2">
+                <div id="horaireAff">
+                    <div class="modal-body">
+                        <h3 class="center">Horaire</h3>
+                        <div class="ligne">
+                            <input type="date" id="dateH" placeholder="hh" class="form-control" />
+                            <label class="deuxPoints">/</label>
+                            <input type="text" id="heureH" placeholder="hh" class="form-control" />
+                            <label class="deuxPoints">:</label>
+                            <input type="text" id="minuteH" placeholder="mm" class="form-control" />
+                            <label class="deuxPoints">:</label>
+                            <input type="text" id="secondeH" placeholder="ss" class="form-control" />
                         </div>
-                        <div>
-                            Install <strong>Finapp</strong> on your iPhone's home screen.
-                        </div>
-                        <div>
-                            Tap <ion-icon name="share-outline"></ion-icon> and Add to homescreen.
-                        </div>
-                        <div class="mt-2">
-                            <button class="btn btn-primary btn-block" data-bs-dismiss="modal">CLOSE</button>
-                        </div>
-                    </div>
+                        <br><br>
 
+                        <select id="actionH" class="form-control">
+                            <option value="on">ON</option>
+                            <option value="off">OFF</option>
+                        </select>
+                        <br><br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="neo" style="color: #ff0000;padding: 10px;font-weight: 1000;"
+                            data-bs-dismiss="modal">Fermer</button>
+                        <button type="button" class="neo" style="color: #007bff;padding: 10px;font-weight: 1000;"
+                            onclick=" AjoutScene()" data-bs-dismiss="modal">Enregistrer</button>
+                    </div>
                 </div>
+                <div id="TimerAff">
+                    <div class="modal-body">
+                        <h3 class="center">Timer</h3>
+                        <div class="ligne">
+                            <input type="text" id="heureT" placeholder="hh" class="form-control" />
+                            <label class="deuxPoints">:</label>
+                            <input type="text" id="minuteT" placeholder="mm" class="form-control" />
+                            <label class="deuxPoints">:</label>
+                            <input type="text" id="secondeT" placeholder="ss" class="form-control" />
+                        </div>
+                        <br><br>
+
+                        <select id="actionT" class="form-control">
+                            <option value="on">ON</option>
+                            <option value="off">OFF</option>
+                        </select>
+                        <br><br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="neo" style="color: #ff0000;padding: 10px;font-weight: 1000;"
+                            data-bs-dismiss="modal">Fermer</button>
+                        <button type="button" class="neo" style="color: #007bff;padding: 10px;font-weight: 1000;"
+                            onclick="AjoutScene()" data-bs-dismiss="modal">Enregistrer</button>
+                    </div>
+                </div>
+                <div id="ConsoAff">
+                    <p>conso</p>
+                </div>
+
+
             </div>
         </div>
     </div>
-    <!-- * iOS Add to Home Action Sheet -->
 
+</body>
+<script src="js.js"></script>
 
-    <!-- Android Add to Home Action Sheet -->
-    <div class="modal inset fade action-sheet android-add-to-home" id="android-add-to-home-screen" tabindex="-1"
-        role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Add to Home Screen</h5>
-                    <a href="#" class="close-button" data-bs-dismiss="modal">
-                        <ion-icon name="close"></ion-icon>
-                    </a>
-                </div>
-                <div class="modal-body">
-                    <div class="action-sheet-content text-center">
-                        <div class="mb-1">
-                            <img src="assets/img/icon/192x192.png" alt="image" class="imaged w64 mb-2">
-                        </div>
-                        <div>
-                            Install <strong>Finapp</strong> on your Android's home screen.
-                        </div>
-                        <div>
-                            Tap <ion-icon name="ellipsis-vertical"></ion-icon> and Add to homescreen.
-                        </div>
-                        <div class="mt-2">
-                            <button class="btn btn-primary btn-block" data-bs-dismiss="modal">CLOSE</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- * Android Add to Home Action Sheet -->
+</html>
 
-
-
-    <!-- ========= JS Files =========  -->
-    <!-- Bootstrap -->
-    <script src="assets/js/lib/bootstrap.bundle.min.js"></script>
-    <!-- Ionicons -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <!-- Splide -->
-    <script src="assets/js/plugins/splide/splide.min.js"></script>
-    <!-- Base Js File -->
-    <script src="assets/js/base.js"></script>
-
-    <script>
-        // Add to Home with 2 seconds delay.
-        AddtoHome("2000", "once");
-    </script>
-
+</div>
+</div>
+</div>
+</div>
+</center>
 </body>
 
 </html>
