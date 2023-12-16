@@ -3,8 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Craft_IT/Android_java/Test/app/src/main/res/drawable/bg_action_job.xml" value="0.2115" />
+        <entry key="..\:/Craft_IT/Android_java/Test/app/src/main/res/drawable/collapsible.xml" value="0.2115" />
+        <entry key="..\:/Craft_IT/Android_java/Test/app/src/main/res/drawable/search_vector.xml" value="0.2115" />
         <entry key="..\:/Craft_IT/Android_java/Test/app/src/main/res/layout/activity_home.xml" value="0.20416666666666666" />
         <entry key="..\:/Craft_IT/Android_java/Test/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Craft_IT/Android_java/Test/app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.33" />
         <entry key="..\:/Users/Manou Jr/Test/app/src/main/res/layout/activity_main.xml" value="0.5" />
       </map>
     </option>
