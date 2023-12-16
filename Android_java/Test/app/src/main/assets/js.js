@@ -1,3 +1,19 @@
+const estUnOrdinateur = () => {
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isAndroid = userAgent.indexOf("android") > -1;
+    const isMobile = /(iphone|ipad|ipod|android)/i.test(userAgent);
+
+    return !(isAndroid || isMobile);
+};
+console.log("ecran " + estUnOrdinateur());
+var ordi = estUnOrdinateur();
+function affichageMobile() {
+    if (ordi) {
+        let Message = document.getElementById('Message');
+        Message.style.display = 'none';
+    }
+}
+affichageMobile();
 var adresse = "https://us-central1-boulou-functions-for-devs.cloudfunctions.net/";
 var deviceId = "bf02db56c7a8be675baaey";
 var devId = "-Nlm4vKk3psfiVmtLOhE";
@@ -66,19 +82,46 @@ function switchButton() {
 }
 
 function sceneHoraire() {
-    let heure = document.getElementById('heureH').value;
-    let minute = document.getElementById('minuteH').value;
-    let seconde = document.getElementById('secondeH').value;
+    let heure = parseInt(document.getElementById('heureH').value);
+    let minute = parseInt(document.getElementById('minuteH').value);
+    let seconde = parseInt(document.getElementById('secondeH').value);
     let action = document.getElementById('actionH').value;
     AjoutScene("scene", deviceId, heure, minute, seconde, action);
 }
 function sceneTimer() {
-    ////////////////////////////
-    let heure = document.getElementById('heureT').value;
-    let minute = document.getElementById('minuteT').value;
+    let heure = parseInt(document.getElementById('heureT').value);
+    let minute = parseInt(document.getElementById('minuteT').value);
+    let seconde = parseInt(document.getElementById('secondeT').value);
     let action = document.getElementById('actionT').value;
-    let seconde = document.getElementById('secondeT').value;
-    AjoutScene("timer", deviceId, heure, minute, seconde, action);
+
+    let maintenant = new Date();
+    let heurePc = maintenant.getHours();
+    let minutesPC = maintenant.getMinutes();
+    let secondesPC = maintenant.getSeconds();
+
+    console.log(`Il est ${heurePc} heures, ${minutesPC} minutes et ${secondesPC} secondes.`);
+
+    const secondesToAdd = 5;
+    let totalSecondes = (heurePc + heure) * 3600 + (minutesPC + minute) * 60 + (secondesPC + secondesToAdd + seconde);
+    console.log(secondesPC, " ", secondesToAdd)
+
+    heurePc = Math.floor(totalSecondes / 3600);
+    totalSecondes %= 3600;
+    minutesPC = Math.floor(totalSecondes / 60);
+    secondesPC = totalSecondes % 60;
+
+    if (heurePc < 10) {
+        heurePc = `0${heurePc}`;
+    }
+    if (minutesPC < 10) {
+        minutesPC = `0${minutesPC}`;
+    }
+    if (secondesPC < 10) {
+        secondesPC = `0${secondesPC}`;
+    }
+    console.log(`Nouvelle heure : ${heurePc}:${minutesPC}:${secondesPC}`);
+
+    AjoutScene("timer", deviceId, heurePc, minutesPC, secondesPC, action);
 }
 
 function AjoutScene(type, deviceId, idH, idM, idS, action) {
