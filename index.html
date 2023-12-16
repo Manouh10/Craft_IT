@@ -114,7 +114,7 @@ pre {
        
 
     <div id="page-wrap">
-        <h1 id="battery-level">10%</h1>
+        <h1 id="battery-level"> </h1>
   
   
     <div class="meter nostripes" >
@@ -147,10 +147,7 @@ pre {
         }
       
         function updateBatteryLevelRandomly() {
-          // Générer une valeur aléatoire entre 1 et 100
           var randomLevel = Math.floor(Math.random() * 100) + 1;
-      
-          // Appeler la fonction setBatteryLevel avec la valeur aléatoire
           setBatteryLevel(randomLevel);
         }
       

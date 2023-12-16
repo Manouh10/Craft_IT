@@ -42,7 +42,6 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
         edt_minute= rootView.findViewById(R.id.edt_minute);
         edt_heure= rootView.findViewById(R.id.edt_heure);
 
-        NotificationUtils.showNotification(getContext(), "Titre de la notification", "Contenu de la notification");
 
 
         edt_minute.setVisibility(View.GONE);

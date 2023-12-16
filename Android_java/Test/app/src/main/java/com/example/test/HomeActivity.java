@@ -10,6 +10,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.example.test.utils.NotificationUtils;
+
 public class HomeActivity extends AppCompatActivity {
     private WebView webView;
     @Override
@@ -31,8 +33,13 @@ public class HomeActivity extends AppCompatActivity {
 
     @JavascriptInterface
     public void navigateMessage() {
-       // Toast.makeText(this, "aoooooooooo", Toast.LENGTH_SHORT).show();
         BottomSheetFragment bottomSheetFragment = new BottomSheetFragment();
         bottomSheetFragment.show(getSupportFragmentManager(), bottomSheetFragment.getTag());
+    }
+
+    @JavascriptInterface
+    public void showNotification(String value) {
+        NotificationUtils.showNotification(getApplicationContext(), "Alerte seuil", "Seuil atteint "+value);
+
     }
 }
