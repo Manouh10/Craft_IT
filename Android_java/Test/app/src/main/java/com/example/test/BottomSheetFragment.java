@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -33,7 +34,7 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
     EditText edt_seconde;
     View rootView;
 
-    Button btn_send;
+    ImageView btn_send;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView=inflater.inflate(R.layout.fragment_bottom_sheet, container, false);
