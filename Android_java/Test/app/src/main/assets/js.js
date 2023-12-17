@@ -28,7 +28,7 @@ var etatAction = adresse + "boulou_switch_device";
 var etatActuel = "https://us-central1-boulou-functions-for-devs.cloudfunctions.net/boulou_check_deviceStatus?developerId=" + devId + "&email=" + mail + "&deviceId=" + deviceId;
 var on = "ON";
 var off = "OFF";
-var ip = "http://192.168.88.21:8080"
+var ip = "http://192.168.1.149:8080"
 var urlSever = "/iot/scene/creer?"
 
 // horaire scene serie= temps=14:00:00 type=scene action=on/off
@@ -267,7 +267,9 @@ function resltatKw() {
                         var result = data.result;
                         const valeur202312 = result['202312'];
                         console.log('Valeur de 202312 :', valeur202312);
-                        var pourcentage = (valeur202312 * 100) / val;
+                        var valInit = (valeur202312 * 100) / val;
+                        var pourcentageArrondi = valInit.toFixed(2);
+                        var pourcentage = parseFloat(pourcentageArrondi);
 
                         if (pourcentage >= 100) {
                             if (localStorage.getItem("notiff") == null) {
