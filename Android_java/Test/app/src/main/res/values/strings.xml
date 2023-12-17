@@ -2,7 +2,6 @@
     <string name="app_name">Test</string>
     <string-array name="names">
         <item>Simple</item>
-        <item>Timer</item>
         <item>Scene</item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->

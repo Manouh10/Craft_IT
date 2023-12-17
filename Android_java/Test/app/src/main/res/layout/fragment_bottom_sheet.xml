@@ -1,6 +1,7 @@
 <!-- res/layout/fragment_bottom_sheet.xml -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -38,7 +39,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="28dp">
+                    android:padding="18dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -103,36 +104,55 @@
                         </RadioGroup>
 
                     </LinearLayout>
-                    <RelativeLayout
-                        android:id="@+id/rl_0"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
+                        <RelativeLayout
+                            android:id="@+id/rl_0"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                          >
 
-                        <EditText
-                            android:id="@+id/edt_minute"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
+                            <EditText
+                               android:id="@+id/edt_heure"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
 
-                    </RelativeLayout>
-                    <RelativeLayout
-                        android:id="@+id/rl_1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:id="@+id/rl_1"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
 
-                        <EditText
-                            android:id="@+id/edt_heure"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <EditText
+                               android:id="@+id/edt_minute"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
 
 
-                    </RelativeLayout>
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:id="@+id/rl_3"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/edt_seconde"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
 
 
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="10dp"/>
+                        </RelativeLayout>
+                    </LinearLayout>
+
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_send"
