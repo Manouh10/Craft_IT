@@ -39,7 +39,7 @@
                 Actualiser
             </button> -->
 
-            <button type="button" class="neo" style="color: #007bff;padding: 10px;font-weight: 1000;"
+            <button type="button" id="Message" class="neo" style="color: #007bff;padding: 10px;font-weight: 1000;"
                 style="margin-top: 10px; width: 200px; height: 45px;" onclick="navigateToMessageActivity()">
                 Message
             </button>
@@ -122,7 +122,7 @@
                         <button type="button" class="neo" style="color: #ff0000;padding: 10px;font-weight: 1000;"
                             data-bs-dismiss="modal">Fermer</button>
                         <button type="button" class="neo" style="color: #007bff;padding: 10px;font-weight: 1000;"
-                            onclick="AjoutScene()" data-bs-dismiss="modal">Enregistrer</button>
+                            onclick="sceneTimer()" data-bs-dismiss="modal">Enregistrer</button>
                     </div>
                 </div>
                 <div id="ConsoAff">
@@ -136,9 +136,9 @@
 
 </body>
 <script>
-       function navigateToMessageActivity(){
-         Android.navigateMessage();
-       }
+    function navigateToMessageActivity() {
+        Android.navigateMessage();
+    }
 
 </script>
 <script src="js.js"></script>
