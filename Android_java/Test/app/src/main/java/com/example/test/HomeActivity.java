@@ -38,8 +38,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     @JavascriptInterface
-    public void showNotification(String value) {
-        NotificationUtils.showNotification(getApplicationContext(), "Alerte seuil", "Seuil atteint "+value);
+    public void showNotification() {
+        NotificationUtils.showNotification(getApplicationContext(), "Alerte seuil", "Seuil atteint !!!");
 
     }
 }
