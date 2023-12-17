@@ -64,6 +64,16 @@ function getData() {
                 alert("Un problème est survenu lors de la récupération de la liste");
             } else {
                 var currentState = itema.result.status.switch;
+                var online = itema.result.online;
+
+                if (online == true) {
+                    var wifi = document.getElementById("online");
+                    wifi.classList = "bi bi-wifi";
+                }
+                else {
+                    var wifi = document.getElementById("online");
+                    wifi.classList = "bi bi-wifi-off";
+                }
 
                 if (currentState !== previousState) {
                     if (currentState == true) {
@@ -81,7 +91,7 @@ function getData() {
         });
 }
 
-setInterval(getData, 3000);
+setInterval(getData, 4000);
 
 getData();
 
