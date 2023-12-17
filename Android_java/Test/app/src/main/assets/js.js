@@ -314,3 +314,55 @@ function resltatKw() {
 }
 
 setInterval(resltatKw, 5000);
+var chart;
+function consoJourn(day) {
+    if (chart) {
+        chart.destroy();
+    }
+    var rep = "https://us-central1-boulou-functions-for-devs.cloudfunctions.net/boulou_get_deviceStatistics?developerId=-Nlm4vKk3psfiVmtLOhE&email=jrmanouhoseah@gmail.com&deviceId=bf02db56c7a8be675baaey&period_type=day&period_value=" + day; fetch(rep)
+        .then(response => response.json())
+        .then(data => {
+            var labels = [];
+            var values = [];
+            for (var key in data.result) {
+                if (data.result.hasOwnProperty(key)) {
+                    var value = data.result[key];
+
+                    labels.push(key);
+                    values.push(parseFloat(value));
+                    // Vous pouvez faire ce que vous voulez avec la clé et la valeur ici
+                }
+            }
+            console.log(labels);
+            console.log(values);
+            const ctx = document.getElementById('myChart');
+
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'KWh',
+                        borderColor: "#ff9742",
+                        data: values,
+                        borderWidth: 1,
+                        tension: 0.5
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        })
+}
+function getDay() {
+    var daty = document.getElementById("daty").value;
+    console.log(daty);
+    var dateParts = daty.split("-");
+    var dateWithoutDashes = dateParts.join("");
+    consoJourn(dateWithoutDashes);
+}
