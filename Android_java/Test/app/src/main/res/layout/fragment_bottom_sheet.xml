@@ -40,13 +40,8 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="18dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="BIENVENUE"
 
-                        android:textSize="32sp"
-                        android:textStyle="bold"/>
+
 
 
                     <View
@@ -56,7 +51,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:alpha="0.7"
+
+                        android:textSize="27dp"
                         android:text="Scenario"
                         android:textStyle="bold" />
 
@@ -64,18 +60,22 @@
                         android:id="@+id/spinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:entries="@array/names"/>
+                        android:textSize="25dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:entries="@array/names" />
 
                     <View
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"/>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+
+                        android:textSize="27dp"
                         android:text="Action"
-                        android:alpha="0.7"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -93,12 +93,14 @@
                                 android:id="@+id/radioButton1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:textSize="17dp"
                                 android:text="Allumer" />
 
                             <RadioButton
                                 android:id="@+id/radioButton2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:textSize="17dp"
                                 android:text="Eteindre" />
 
                         </RadioGroup>
@@ -119,7 +121,9 @@
                             <EditText
                                android:id="@+id/edt_heure"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:hint="Heure"
+                                android:textColorHint="#FFFFFF"/>
 
                         </RelativeLayout>
                         <RelativeLayout
@@ -133,7 +137,9 @@
                             <EditText
                                android:id="@+id/edt_minute"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:hint="Minute"
+                                android:textColorHint="#FFFFFF"/>
 
 
                         </RelativeLayout>
@@ -147,7 +153,9 @@
                             <EditText
                                 android:id="@+id/edt_seconde"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:hint="Seconde"
+                                android:textColorHint="#FFFFFF"/>
 
 
                         </RelativeLayout>
