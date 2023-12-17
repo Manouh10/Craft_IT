@@ -43,6 +43,11 @@
                 style="margin-top: 10px; width: 200px; height: 45px;" onclick="navigateToMessageActivity()">
                 Message
             </button>
+            <button type="button" id="Details" class="neo" style="color: #007bff;padding: 10px;font-weight: 1000;"
+                style="margin-top: 10px; width: 200px; height: 45px;" data-bs-toggle="modal"
+                data-bs-target="#exampleModalDetails">
+                DETAILS
+            </button>
         </div>
     </nav>
 
@@ -134,22 +139,32 @@
         </div>
     </div>
 
-</body>
-<script>
-    function navigateToMessageActivity() {
-        Android.navigateMessage();
-    }
+    <div class="modal fade" id="exampleModalDetails" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="center">Timer</h3>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Types</th>
+                                <th>Heures</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
 
-</script>
+</body>
 <script src="js.js"></script>
 
 </html>
 
-</div>
-</div>
-</div>
-</div>
-</center>
 </body>
 
 </html>

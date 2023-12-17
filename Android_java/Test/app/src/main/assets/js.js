@@ -1,3 +1,6 @@
+function navigateToMessageActivity() {
+    Android.navigateMessage();
+}
 const estUnOrdinateur = () => {
     const userAgent = navigator.userAgent.toLowerCase();
     const isAndroid = userAgent.indexOf("android") > -1;
@@ -86,6 +89,15 @@ function sceneHoraire() {
     let minute = parseInt(document.getElementById('minuteH').value);
     let seconde = parseInt(document.getElementById('secondeH').value);
     let action = document.getElementById('actionH').value;
+    if (heure < 10) {
+        heure = "0" + heure;
+    }
+    if (minute < 10) {
+        minute = "0" + minute;
+    }
+    if (seconde < 10) {
+        seconde = "0" + seconde;
+    }
     AjoutScene("scene", deviceId, heure, minute, seconde, action);
 }
 function sceneTimer() {
