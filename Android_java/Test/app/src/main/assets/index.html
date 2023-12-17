@@ -143,18 +143,27 @@
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="center">Timer</h3>
-                </div>
                 <div class="modal-body">
+                    <h3 class="center">DETAILS</h3>
+
+                    <div id="page-wrap">
+                        <h1 id="battery-level"> </h1>
+                        <div class="meter nostripes">
+                            <span id="battery-meter"></span>
+                        </div>
+                    </div>
+
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Types</th>
-                                <th>Heures</th>
-                                <th>Actions</th>
+                                <th>Horaire</th>
+                                <th>Action</th>
+                                <th>Type</th>
                             </tr>
                         </thead>
+                        <tbody id="sceneTableau">
+
+                        </tbody>
                     </table>
                 </div>
             </div>

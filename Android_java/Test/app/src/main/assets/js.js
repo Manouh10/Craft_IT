@@ -184,9 +184,47 @@ function listeScene() {
             if (res === "ko") {
                 alert("Un problème est survenu lors de la recuperation de la liste");
             } else {
-                console.log(data);
+                const tableau = document.getElementById("sceneTableau");
+
+                data.forEach(scene => {
+                    tableau.innerHTML += `
+                    <tr>
+                      <td>${scene.temps}</td>
+                      <td>${scene.action}</td>
+                      <td>${scene.type}</td>
+                    </tr>
+                  `;
+                })
             }
         })
 }
 
 listeScene();
+
+function setBatteryLevel(level) {
+    level = Math.max(0, Math.min(100, level));
+    var meterSpan = document.querySelector('.meter > span');
+    meterSpan.style.width = level + '%';
+
+    var h1Element = document.getElementById('battery-level');
+    h1Element.textContent = "Seuil : " + level + '% (KW)';
+    h1Element.style.textAlign = "center";
+    var meter = document.getElementById('battery-meter');
+    if (level < 20) {
+        meter.style.backgroundColor = 'green';
+    } else if (level < 40) {
+        meter.style.backgroundColor = 'limegreen';
+    } else if (level < 60) {
+        meter.style.backgroundColor = 'yellow';
+    } else if (level < 80) {
+        meter.style.backgroundColor = 'orange';
+    } else {
+        meter.style.backgroundColor = 'red';
+    }
+}
+function updateBatteryLevelRandomly() {
+    var randomLevel = Math.floor(Math.random() * 100) + 1;
+    setBatteryLevel(randomLevel);
+}
+
+setInterval(updateBatteryLevelRandomly, 1100);
