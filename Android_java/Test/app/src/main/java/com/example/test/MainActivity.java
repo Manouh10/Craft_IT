@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
          edt_minute=findViewById(R.id.edt_minute);
          edt_heure=findViewById(R.id.edt_heure);
 
-        NotificationUtils.showNotification(this, "Titre de la notification", "Contenu de la notification");
+      //  NotificationUtils.showNotification(this, "Titre de la notification", "Contenu de la notification");
 
 
         edt_minute.setVisibility(View.GONE);

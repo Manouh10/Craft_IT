@@ -2,6 +2,10 @@ package com.example.test;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.media.MediaPlayer;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
@@ -40,6 +44,20 @@ public class HomeActivity extends AppCompatActivity {
     @JavascriptInterface
     public void showNotification() {
         NotificationUtils.showNotification(getApplicationContext(), "Alerte seuil", "Seuil atteint !!!");
+        soundOn(getApplicationContext());
+    }
+    public void soundOn(Context context) {
+        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        MediaPlayer mediaPlayer = MediaPlayer.create(context, defaultSoundUri);
 
+        if (mediaPlayer != null) {
+            mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    mediaPlayer.release();
+                }
+            });
+        }
     }
 }
