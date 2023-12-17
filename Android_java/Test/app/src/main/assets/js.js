@@ -236,7 +236,6 @@ function seuilPost() {
         .then(data => {
             if (data.resultat == "ok") {
                 alert('Seuil parametré');
-
             }
             else {
                 console.log("Erreur");
@@ -266,7 +265,7 @@ function resltatKw() {
                     if (data.success == true) {
                         var result = data.result;
                         const valeur202312 = result['202312'];
-                        console.log('Valeur de 202312 :', valeur202312);
+                        // console.log('Valeur de 202312 :', valeur202312);
                         var valInit = (valeur202312 * 100) / val;
                         var pourcentageArrondi = valInit.toFixed(2);
                         var pourcentage = parseFloat(pourcentageArrondi);
