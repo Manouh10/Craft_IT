@@ -1,6 +1,9 @@
 function navigateToMessageActivity() {
     Android.navigateMessage();
 }
+function sendNotification() {
+    Android.showNotification();
+}
 const estUnOrdinateur = () => {
     const userAgent = navigator.userAgent.toLowerCase();
     const isAndroid = userAgent.indexOf("android") > -1;
@@ -175,7 +178,7 @@ function noneAfficherModal() {
 }
 
 function listeScene() {
-    var req = "http://192.168.88.21:8080/iot/scene/lister?serie=bf02db56c7a8be675baaey";
+    var req = ip + "/iot/scene/lister?serie=bf02db56c7a8be675baaey";
     fetch(req)
         .then(response => response.json())
         .then(data => {
@@ -201,13 +204,13 @@ function listeScene() {
 
 listeScene();
 
-function setBatteryLevel(level) {
+function setBatteryLevel(level, val) {
     level = Math.max(0, Math.min(100, level));
     var meterSpan = document.querySelector('.meter > span');
     meterSpan.style.width = level + '%';
 
     var h1Element = document.getElementById('battery-level');
-    h1Element.textContent = "Seuil : " + level + '% (KW)';
+    h1Element.textContent = "Seuil : " + level + '%  ' + "(" + val + 'KW)';
     h1Element.style.textAlign = "center";
     var meter = document.getElementById('battery-meter');
     if (level < 20) {
@@ -222,9 +225,67 @@ function setBatteryLevel(level) {
         meter.style.backgroundColor = 'red';
     }
 }
-function updateBatteryLevelRandomly() {
-    var randomLevel = Math.floor(Math.random() * 100) + 1;
-    setBatteryLevel(randomLevel);
+
+
+function seuilPost() {
+    var kilo = document.getElementById('consom').value;
+    console.log(kilo)
+    var req = ip + "/iot/scene/consommation/creer?&serie=bf02db56c7a8be675baaey&action=off&maxKwh=" + kilo + "&maxA=0"
+    fetch(req)
+        .then(response => response.json())
+        .then(data => {
+            if (data.resultat == "ok") {
+                alert('Seuil parametré');
+                localStorage.removeItem("notiff");
+            }
+            else {
+                console.log("Erreur");
+            }
+        })
+}
+function seuilGetKW() {
+
 }
 
-setInterval(updateBatteryLevelRandomly, 1100);
+seuilGetKW();
+
+
+function resltatKw() {
+    var kilo = document.getElementById('consom').value;
+    console.log(kilo)
+    var req = ip + "/iot/scene/consommation/getMaxkwh"
+    fetch(req)
+        .then(response => response.json())
+        .then(data => {
+            var val = data.resultat;
+
+            var rep = "https://us-central1-boulou-functions-for-devs.cloudfunctions.net/boulou_get_deviceStatistics?developerId=-Nlm4vKk3psfiVmtLOhE&email=jrmanouhoseah@gmail.com&deviceId=bf02db56c7a8be675baaey&period_type=year&period_value=2023"
+            fetch(rep)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success == true) {
+                        var result = data.result;
+                        const valeur202312 = result['202312'];
+                        console.log('Valeur de 202312 :', valeur202312);
+                        var pourcentage = (valeur202312 * 100) / val;
+
+                        if (pourcentage >= 100) {
+                            if (localStorage.getItem("notiff") == null) {
+                                localStorage.setItem("notiff", "true");
+                                sendNotification();
+                            }
+                            setBatteryLevel(100, valeur202312);
+                        }
+                        else {
+                            setBatteryLevel(pourcentage, valeur202312);
+                        }
+
+                    }
+                    else {
+                        console.log("Erreur");
+                    }
+                })
+        })
+}
+
+setInterval(resltatKw, 2000);

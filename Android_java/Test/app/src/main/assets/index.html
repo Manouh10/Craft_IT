@@ -131,7 +131,19 @@
                     </div>
                 </div>
                 <div id="ConsoAff">
-                    <p>conso</p>
+                    <div class="modal-body">
+                        <h3 class="center">Consommation</h3>
+                        <label class="deuxPoints">Seuil en KW</label>
+                        <input type="text" id="consom" placeholder="en KiloWatt" class="form-control" />
+                        <label class="deuxPoints">Action OFF</label>
+                        <br><br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="neo" style="color: #ff0000;padding: 10px;font-weight: 1000;"
+                            data-bs-dismiss="modal">Fermer</button>
+                        <button type="button" class="neo" style="color: #007bff;padding: 10px;font-weight: 1000;"
+                            onclick="seuilPost()" data-bs-dismiss="modal">Enregistrer</button>
+                    </div>
                 </div>
 
 
