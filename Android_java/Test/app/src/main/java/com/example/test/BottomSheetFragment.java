@@ -30,6 +30,7 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
 
     EditText edt_minute;
     EditText edt_heure;
+    EditText edt_seconde;
     View rootView;
 
     Button btn_send;
@@ -41,11 +42,13 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
         btn_send= rootView.findViewById(R.id.btn_send);
         edt_minute= rootView.findViewById(R.id.edt_minute);
         edt_heure= rootView.findViewById(R.id.edt_heure);
+        edt_seconde= rootView.findViewById(R.id.edt_seconde);
 
 
 
         edt_minute.setVisibility(View.GONE);
         edt_heure.setVisibility(View.GONE);
+        edt_seconde.setVisibility(View.GONE);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 getContext(),
                 R.array.names,
@@ -62,13 +65,12 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
                 if(scenario.compareTo("Simple")==0){
                     edt_minute.setVisibility(View.GONE);
                     edt_heure.setVisibility(View.GONE);
+                    edt_seconde.setVisibility(View.GONE);
                 }
-                else if(scenario.compareTo("Timer")==0){
-                    edt_minute.setVisibility(View.VISIBLE);
-                    edt_heure.setVisibility(View.GONE);
-                } else if(scenario.compareTo("Scene")==0){
+                else if(scenario.compareTo("Scene")==0){
                     edt_minute.setVisibility(View.VISIBLE);
                     edt_heure.setVisibility(View.VISIBLE);
+                    edt_seconde.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -97,24 +99,16 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
                             if(scenario.compareTo("Simple")==0){
                                 sendSMS( action);
                             }
-                            else if(scenario.compareTo("Timer")==0){
-                                String minuteString= edt_minute.getText().toString().trim();
-                                if(minuteString!="")
-                                {
-                                    sendSMS(action+"_"+minuteString);
-                                }
-                                else{
-                                    Toast.makeText(getContext(), "Ajouter la minute", Toast.LENGTH_SHORT).show();
-                                }
-                            } else if(scenario.compareTo("Scene")==0){
+                          else if(scenario.compareTo("Scene")==0){
                                 String minuteString= edt_minute.getText().toString().trim();
                                 String heureString= edt_heure.getText().toString().trim();
-                                if(minuteString!="" && heureString!="")
+                                String secondeString= edt_seconde.getText().toString().trim();
+                                if(minuteString!="" && heureString!="" && secondeString!="")
                                 {
-                                    sendSMS( action+"_"+heureString+"_"+minuteString);
+                                    sendSMS( action+"_"+heureString+"_"+minuteString+"_"+secondeString);
                                 }
                                 else{
-                                    Toast.makeText(getContext(), "Ajouter l'heure et minute", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), "Ajouter l'heure , minute et seconde", Toast.LENGTH_SHORT).show();
                                 }
 
                             }
