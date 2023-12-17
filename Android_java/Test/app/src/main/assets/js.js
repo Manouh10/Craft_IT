@@ -1,3 +1,6 @@
+function reload() {
+    location.reload();
+}
 function navigateToMessageActivity() {
     Android.navigateMessage();
 }
@@ -310,4 +313,4 @@ function resltatKw() {
         })
 }
 
-setInterval(resltatKw, 2000);
+setInterval(resltatKw, 5000);
