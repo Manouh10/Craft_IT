@@ -236,7 +236,7 @@ function seuilPost() {
         .then(data => {
             if (data.resultat == "ok") {
                 alert('Seuil parametré');
-                localStorage.removeItem("notiff");
+
             }
             else {
                 console.log("Erreur");
@@ -275,6 +275,9 @@ function resltatKw() {
                                 sendNotification();
                             }
                             setBatteryLevel(100, valeur202312);
+                        }
+                        else if (pourcentage < 100 && localStorage.getItem("notiff") != null) {
+                            localStorage.removeItem("notiff");
                         }
                         else {
                             setBatteryLevel(pourcentage, valeur202312);
