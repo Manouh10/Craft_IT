@@ -65,7 +65,6 @@ function getData() {
             } else {
                 var currentState = itema.result.status.switch;
 
-                // Vérifier si l'état a changé avant de mettre à jour l'interface utilisateur
                 if (currentState !== previousState) {
                     if (currentState == true) {
                         checkbox.checked = true;
