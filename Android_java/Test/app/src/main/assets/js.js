@@ -53,6 +53,7 @@ function etat(action) {
         .then(data => console.log('Response:', data))
         .catch(error => console.error('Error:', error));
 }
+var previousState = null; // Variable pour stocker l'état précédent
 function getData() {
     var checkbox = document.getElementById('switchToggle');
     fetch(etatActuel)
@@ -60,23 +61,31 @@ function getData() {
         .then(itema => {
             var success = itema.success;
             if (success == false) {
-                alert("Un problème est survenu lors de la recuperation de la liste");
+                alert("Un problème est survenu lors de la récupération de la liste");
             } else {
-                var state = itema.result.status.switch;
-                if (state == true) {
-                    checkbox.checked = true;
+                var currentState = itema.result.status.switch;
+
+                // Vérifier si l'état a changé avant de mettre à jour l'interface utilisateur
+                if (currentState !== previousState) {
+                    if (currentState == true) {
+                        checkbox.checked = true;
+                    } else {
+                        checkbox.checked = false;
+                    }
+                    console.log(currentState);
+                    previousState = currentState; // Mettre à jour l'état précédent
                 }
-                else if (state == false) {
-                    checkbox.checked = false;
-                }
-                console.log(state);
             }
         })
         .catch(error => {
             console.error('Une erreur s\'est produite:', error);
         });
 }
+
+setInterval(getData, 3000);
+
 getData();
+
 
 function switchButton() {
     var check = document.getElementById('switchToggle').checked;
