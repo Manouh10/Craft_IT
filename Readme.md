@@ -2,7 +2,7 @@ Jquery est le web app avec les fonctionalités: switch device,  horaire, timer, 
 
 L'apk Android_java possède les fonctionalités de Jquery mais en plus l'extinction sans connexion par SMS(ON/OFF ou ON/OFF avec horaire) et la réception d'alerte en cas de seuil de consommation atteint 
 
-React_native est le serveur mobile recois les SMS d'instructions en les éxecutant après et gère les numéros qui peuvent faire des instructions
+React_native est le serveur mobile qui recois les SMS d'instructions en les éxecutant après et gère les numéros qui peuvent faire des instructions
 
 API Spring MVC est le coeur des fonctionalités dans les front end mobile et web qui gère les services Dao avec la relation front et le Cloud de Boulou
 
