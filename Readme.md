@@ -1,6 +1,6 @@
 Jquery est le web app avec les fonctionalités: switch device,  horaire, timer, gestion de consommation(seuil) , historique des sènes .
 
-L'apk Android_java possède les fonctionalités de Native Jquery mais en plus l'extinction sans connexion par SMS(ON/OFF ou ON/OFF avec horaire) et la réception d'alerte en cas de seuil de consommation atteint 
+L'apk Android_java possède les fonctionalités de Jquery mais en plus l'extinction sans connexion par SMS(ON/OFF ou ON/OFF avec horaire) et la réception d'alerte en cas de seuil de consommation atteint 
 
 React_native est le serveur mobile recois les SMS d'instructions en les éxecutant après et gère les numéros qui peuvent faire des instructions
 
